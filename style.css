@@ -1,0 +1,130 @@
+/* تنسيقات أساسية للجسم والصفحة */
+body { 
+    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; 
+    background: #050505; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  body { 
+    margin: 0; 
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    background: #050505; 
+    color: #fff; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    
+    /* غير دي من hidden لـ auto */
+    overflow-y: auto; 
+    
+    /* ضيف دي كمان عشان لو المحتوى بقى كبير ميقطعش من فوق */
+    padding: 20px 0;
+}
+
+/* الخلفية المتحركة */
+.bg-animation { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; 
+}
+.bg-animation::before, .bg-animation::after { 
+    content: ''; position: absolute; width: 400px; height: 400px; 
+    background: radial-gradient(circle, #00f2fe 0%, transparent 70%); 
+    border-radius: 50%; opacity: 0.2; animation: floatBG 15s infinite alternate; 
+}
+.bg-animation::after { 
+    top: 50%; left: 50%; 
+    background: radial-gradient(circle, #ff0055 0%, transparent 70%); 
+    animation-delay: 5s; 
+}
+@keyframes floatBG { 
+    0% { transform: translateY(0) scale(1); } 
+    100% { transform: translateY(-100px) scale(1.2); } 
+}
+
+/* حاوية الموقع الرئيسية */
+.container { 
+    text-align: center; max-width: 400px; width: 90%; z-index: 1; 
+    background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 25px; 
+    backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* تأثير الطفو للصورة الشخصية */
+.profile-img { 
+    width: 110px; height: 110px; border-radius: 50%; 
+    border: 3px solid #00f2fe; margin-bottom: 10px; 
+    object-fit: cover;
+    animation: floatingImg 3s ease-in-out infinite; 
+}
+@keyframes floatingImg { 
+    0% { transform: translateY(0px); } 
+    50% { transform: translateY(-15px); } 
+    100% { transform: translateY(0px); } 
+}
+
+/* تنسيق الأزرار (مرن) */
+.social-container { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.social-btn { 
+    display: block; width: 100%; padding: 12px; 
+    background: rgba(255,255,255,0.03); color: white; text-decoration: none; 
+    border-radius: 12px; transition: 0.3s; 
+    border: 1px solid rgba(255,255,255,0.1); 
+}
+
+/* تأثير حركة الضغط وتغيير الحجم */
+/* الأزرار بتأثير النور المتحرك */
+.social-btn { 
+    display: block; width: 100%; padding: 12px; 
+    background: rgba(255, 255, 255, 0.05); color: white; text-decoration: none; 
+    border-radius: 12px; transition: 0.4s; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative; overflow: hidden; /* مهم جداً عشان النور ميتخطاش حدود الزرار */
+}
+
+/* تأثير النور اللي بيمشي جوا الزرار */
+.social-btn::before {
+    content: ''; position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.social-btn:hover::before {
+    left: 100%; /* النور بيتحرك من الشمال لليمين لما تقف بالماوس */
+}
+
+/* توهج لكل زرار بلونه الخاص عند الماوس */
+.fb:hover { box-shadow: 0 0 20px #1877f2; border-color: #1877f2; }
+.ig:hover { box-shadow: 0 0 20px #e1306c; border-color: #e1306c; }
+.tt:hover { box-shadow: 0 0 20px #fe004f; border-color: #fe004f; }
+.x:hover { box-shadow: 0 0 20px #ffffff; border-color: #ffffff; }
+.k:hover { box-shadow: 0 0 20px #00ff41; border-color: #00ff41; }
+.gm:hover { box-shadow: 0 0 20px #ea4335; border-color: #ea4335; }
+.wa:hover { box-shadow: 0 0 20px #25d366; border-color: #25d366; }
+.st:hover { box-shadow: 0 0 20px #1b2838; border-color: #1b2838; }
+.dc:hover { box-shadow: 0 0 20px #5865f2; border-color: #5865f2; }
+
+/* توهج الأزرار الملون التفاعلي (Dynamic Glow) عند الوقوف بالماوس */
+.fb:hover { box-shadow: 0 0 15px #1877f2; border-color: #1877f2; }
+.ig:hover { box-shadow: 0 0 15px #e1306c; border-color: #e1306c; }
+.tt:hover { box-shadow: 0 0 15px #fe004f; border-color: #fe004f; }
+.wa:hover { box-shadow: 0 0 15px #25d366; border-color: #25d366; }
+.dc:hover { box-shadow: 0 0 15px #5865f2; border-color: #5865f2; }
+
+/* تنسيق الفوتر */
+footer { margin-top: 25px; font-size: 11px; opacity: 0.4; }
+#bg-video {
+    position: fixed; 
+    right: 0; 
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    z-index: -1; 
+    object-fit: cover;
+    filter: brightness(0.4);
+    pointer-events: none; /* ده السطر السحري اللي بيخلي الماوس يضغط على اللي ورا الفيديو! */
+}
+.control-panel { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+.ctrl-btn { 
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); 
+    padding: 8px 15px; border-radius: 8px; color: white; cursor: pointer;
+    transition: 0.3s; font-size: 12px;
+}
+.ctrl-btn:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
